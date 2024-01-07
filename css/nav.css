@@ -1,0 +1,14 @@
+.nav__list {
+  display: flex;
+  gap: 20px;
+}
+.nav__item {
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  height: 100%;
+  line-height: 54px;
+}
+.nav__item:hover {
+  color: #CAFA7A;
+}

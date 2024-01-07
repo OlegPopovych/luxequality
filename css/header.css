@@ -1,0 +1,25 @@
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #283149;
+  padding-inline: 40px;
+}
+.header__btn {
+  display: flex;
+  align-items: center;
+  height: 43px;
+  padding: 12px 20px;
+  border: none;
+  background: #ceff7b;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  justify-content: center;
+  grid-gap: 10px;
+  gap: 10px;
+  color: rgb(40, 49, 73);
+  line-height: 1.5;
+}

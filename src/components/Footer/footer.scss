@@ -1,0 +1,18 @@
+.footerBlock {
+	padding: 0;
+	background-color: #283149;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 14px;
+	
+	a {
+	text-decoration: none;
+
+	color: #fff;
+
+	&:hover {
+		color: #CEFF7B;
+	}
+	}
+}

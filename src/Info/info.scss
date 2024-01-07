@@ -1,0 +1,36 @@
+.info {
+	padding: 20px 10px 20px;
+	background-color: #F2F4F5;
+	max-height: calc(100vh - 54px - 100px);
+	display: flex;
+	flex-direction: column;
+
+	&__location {
+		margin-left: 5px;
+	}
+
+	&__title {
+		text-align: center;
+	}
+
+	&__element {
+	border-radius: 20px;
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	&::-webkit-scrollbar {
+		background-color: #F2F4F5; /* Колір фону смуги прокрутки */
+	}
+	
+	&::-webkit-scrollbar-thumb {
+		background-color: #ceff7b; /* Колір смуги прокрутки */
+		border-radius: 5px;
+	}
+
+	&::-webkit-scrollbar {
+    width: 12px;
+  }
+	}
+}

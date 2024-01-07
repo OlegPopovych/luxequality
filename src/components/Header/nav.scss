@@ -1,0 +1,18 @@
+.nav {
+	&__list {
+		display: flex;
+		gap: 20px;
+	}
+
+	&__item {
+		font-size: 14px;
+		text-decoration: none;
+		color: #fff;
+		height: 100%;
+		line-height: 54px;
+
+		&:hover {
+			color: #CAFA7A;
+		}
+	}
+}

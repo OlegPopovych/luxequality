@@ -178,8 +178,8 @@ export const AddForm: React.FC = () => {
       </div>
 
       <div className="field">
-        <label className="label">Photo</label>
-        <div className="file has-name is-fullwidth">
+        <label className="label">Додати фото</label>
+        <div className="file has-name is-fullwidth is-normal is-info">
           <label className="file-label">
             <input
               className="file-input"
@@ -191,10 +191,10 @@ export const AddForm: React.FC = () => {
               <span className="file-icon">
                 <i className="fas fa-upload"></i>
               </span>
-              <span className="file-label">Choose a file…</span>
+              <span className="file-label">Додати фото</span>
             </span>
             <span className="file-name">
-              {formData.photo ? formData.photo.name : 'No file chosen'}
+              {formData.photo ? formData.photo.name : 'Фото не додано'}
             </span>
           </label>
         </div>

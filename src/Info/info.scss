@@ -1,6 +1,8 @@
+@import '../util/variables.scss';
+
 .info {
 	padding: 20px 10px 20px;
-	background-color: #F2F4F5;
+	background-color: $color-white;
 	max-height: calc(100vh - 54px - 50px);
 	display: flex;
 	flex-direction: column;
@@ -22,11 +24,11 @@
 	gap: 10px;
 
 	&::-webkit-scrollbar {
-		background-color: #F2F4F5;
+		background-color: $color-white;
 	}
 	
 	&::-webkit-scrollbar-thumb {
-		background-color: #ceff7b;
+		background-color: $color-green;
 		border-radius: 5px;
 	}
 

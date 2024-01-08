@@ -1,3 +1,5 @@
+@import '../../util/variables.scss';
+
 .header {
 	grid-area: header;
 	display: grid;
@@ -6,7 +8,7 @@
 	grid-template-columns: auto auto auto;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #283149;
+	background-color: $color-blue-dark;
 	padding-inline: 40px;
 
 	&__logo {
@@ -19,7 +21,7 @@
     align-items: center;
     padding: 12px 20px;
     border: none;
-    background: #ceff7b;
+    background: $color-green;
     border-radius: 30px;
     font-weight: 500;
     font-size: 1rem;
@@ -27,7 +29,7 @@
     justify-content: center;
     grid-gap: 10px;
     gap: 10px;
-		color: rgb(40, 49, 73);
+		color: $color-blue-dark;
 		line-height: 1.5;
 	}
 }

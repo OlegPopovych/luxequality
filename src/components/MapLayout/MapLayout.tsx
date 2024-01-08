@@ -22,7 +22,7 @@ interface MainMapProps {
 }
 
 export const MapLayout: React.FC<MainMapProps> = ({ points, type }) => {
-  const [center, setCenter] = useState<LatLngTuple>([48.6211999, 24.5759679]);
+  const [center, setCenter] = useState<LatLngTuple>([49.440616243432, 32.017632745955446]);
 
   const dispatch = useAppDispatch();
   const dispatcher = useThunkDispatch();

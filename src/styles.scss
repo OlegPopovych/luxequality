@@ -74,24 +74,4 @@ main {
 		"footerBlock";
     gap: 0;
   }
-
-  .show-menu {
-    position: fixed;
-    display: block;
-    bottom: 30px;
-    right: 0;
-    padding: 10px 15px;
-    background: #333;
-    color: #fff;
-    border-radius: 5px 0 0 5px;
-    z-index: 10;
-  }
-
-  .show-menu-examples nav {
-    transform: translateX(0);
-  }
-
-  nav ul li:hover {
-    background: #d6d6d6;
-  }
 }

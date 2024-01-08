@@ -1,6 +1,8 @@
+@import '../../util/variables.scss';
+
 .footerBlock {
 	padding: 0;
-	background-color: #283149;
+	background-color: $color-blue-dark;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -9,10 +11,10 @@
 	a {
 	text-decoration: none;
 
-	color: #fff;
+	color: $color-white;
 
 	&:hover {
-		color: #CEFF7B;
+		color: $color-green;
 	}
 	}
 }

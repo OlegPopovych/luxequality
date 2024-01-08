@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 
 import './util/reset.scss';
-import './styles.css';
+import './styles.scss';
 import App from './App';
 import 'bulma/css/bulma.css';
 import { store } from './store/store';

@@ -10,8 +10,8 @@ import {
 } from 'react-leaflet';
 import { LatLng, LatLngBounds, LatLngTuple } from 'leaflet';
 import tileLayer from '../../util/tileLayer';
-import { MyComponent } from './MapComponent';
-import { PointType } from '../../util/types';
+import { MapComponent } from './MapComponent';
+import { InfoType, MapType, PointType } from '../../util/types';
 import { useAppDispatch, useThunkDispatch } from '../../store/hooks';
 import { addCoords } from '../../store/coordsSlice';
 import { changeType, fetchAdverts, setUpBounds } from '../../store/advertSlice';
@@ -29,23 +29,23 @@ export const MapLayout: React.FC<MainMapProps> = ({ points, type }) => {
   const dispatchType = useAppDispatch();
 
   const handleCoords = (coords: LatLng) => {
-    if (type === 'modal') {
+    if (type === MapType.Modal) {
       dispatch(addCoords([coords]));
     }
   };
 
   const handleMarkerClick = (marker: number[]) => {
-    if (type !== 'modal' && marker) {
+    if (type !== MapType.Modal && marker) {
       dispatcher(fetchAdverts(JSON.stringify(marker)));
-      dispatchType(changeType('one'));
+      dispatchType(changeType(InfoType.One));
     }
   };
 
   const handleSetBounds = (bounds: LatLngBounds) => {
-    if (type !== 'modal' && bounds) {
+    if (type !== MapType.Modal && bounds) {
       dispatch(setUpBounds(bounds));
       dispatcher(fetchAdverts());
-      dispatchType(changeType('all'));
+      dispatchType(changeType(InfoType.All));
     }
   };
 
@@ -53,7 +53,7 @@ export const MapLayout: React.FC<MainMapProps> = ({ points, type }) => {
     <MapContainer
       center={center} zoom={6}
       scrollWheelZoom={true}>
-      <MyComponent
+      <MapComponent
         setBounds={handleSetBounds}
         setCenter={setCenter}
         setMap={()=>{}}

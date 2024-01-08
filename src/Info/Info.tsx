@@ -13,6 +13,7 @@ import {
 } from '../store/hooks';
 import './info.scss';
 import { Spinner } from '../components/Loader/Spinner';
+import { InfoType } from '../util/types';
 
 const Info = () => {
   const adverts = useAppSelector(selectAdvertsWithBounds);
@@ -23,7 +24,7 @@ const Info = () => {
 
   useEffect(() => {
     dispatcher(fetchAdverts());
-    dispatchType(changeType('all'));
+    dispatchType(changeType(InfoType.All));
   }, []);
 
   return (

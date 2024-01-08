@@ -1,9 +1,10 @@
 .info {
 	padding: 20px 10px 20px;
 	background-color: #F2F4F5;
-	max-height: calc(100vh - 54px - 100px);
+	max-height: calc(100vh - 54px - 50px);
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 
 	&__location {
 		margin-left: 5px;

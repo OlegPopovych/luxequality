@@ -16,3 +16,12 @@ export interface PointType {
 	lng: number;
 	title: string;
 }
+
+export enum InfoType {
+  All = 'all',
+  One = 'one',
+}
+
+export enum MapType {
+  Modal = 'modal',
+}

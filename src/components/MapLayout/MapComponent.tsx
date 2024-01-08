@@ -10,7 +10,7 @@ type MyComponentProps = {
   setCords(map: LatLng): void;
 };
 
-export const MyComponent: React.FC<MyComponentProps> = ({
+export const MapComponent: React.FC<MyComponentProps> = ({
   setBounds,
   setCenter,
   setMap,

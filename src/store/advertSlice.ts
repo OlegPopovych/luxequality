@@ -2,7 +2,7 @@
 
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { Advert } from '../util/types';
+import { Advert, InfoType } from '../util/types';
 import axios from 'axios';
 import { LatLngBounds } from 'leaflet';
 
@@ -11,14 +11,14 @@ const BASE_URL = 'https://luxequality-test-api-docker.onrender.com';
 type initialType = {
 	data: Advert[];
   advertLoadingStatus: 'idle' | 'loading' | 'error';
-	type: 'all' | 'one';
+	type: InfoType;
 	bounds: LatLngBounds | null;
 };
 
 const initialState: initialType = {
   data: [],
   advertLoadingStatus: 'loading',
-  type: 'all',
+  type: InfoType.All,
   bounds: null,
 };
 
@@ -45,7 +45,7 @@ export const advertSlice = createSlice({
     addAdvert: (state, action: PayloadAction<Advert>) => {
       state.data.push(action.payload);
     },
-    changeType: (state, action: PayloadAction<'all' | 'one'>) => {
+    changeType: (state, action: PayloadAction<InfoType>) => {
       state.type = action.payload;
     },
     setUpBounds: (state, action: PayloadAction<LatLngBounds>) => {

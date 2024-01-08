@@ -4,6 +4,7 @@ import { useAppSelector } from '../../store/hooks';
 import { selectCoords } from '../../store/coordsSlice';
 import cn from 'classnames';
 import { usePageError } from '../../hooks/usePageError';
+import { MapType } from '../../util/types';
 
 const BASE_URL = 'https://luxequality-test-api-docker.onrender.com';
 
@@ -51,8 +52,8 @@ export const AddForm: React.FC = () => {
         const address = `${
           data.address.city || data.address.town || data.address.village || ''
         }, ${data.address.road || ''} ${data.address.house_number || ''} ${
-          data.address.country
-        }, ${data.address.district}`;
+          data.address.country || ''
+        }, ${data.address.district || ''}`;
         setFormData((prevData) => ({ ...prevData, ['location']: address }));
       } catch (error) {
         console.log(error);
@@ -135,7 +136,7 @@ export const AddForm: React.FC = () => {
       </div>
 
       <div className="field">
-        <label className="label">Розташування</label>
+        <label className="label">Розташування на мапі</label>
         <div className="control">
           <input
             className="input"
@@ -228,7 +229,7 @@ export const AddForm: React.FC = () => {
               ]
               : []
           }
-          type={'modal'}
+          type={MapType.Modal}
         />
       </div>
     </form>

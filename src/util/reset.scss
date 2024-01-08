@@ -126,3 +126,9 @@ table {
 html {
 		overflow-y: hidden !important;
 }
+
+@media (max-width: 800px) {
+	html {
+		overflow-y: scroll !important;
+}
+}

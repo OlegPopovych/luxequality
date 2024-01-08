@@ -12,10 +12,6 @@ export const MainMap: React.FC<MainMapProps> = () => {
 
   if (points.length !== 0) {
     pointsToRender = points.map((elem) => {
-      console.log({
-        lat: JSON.parse(elem.coords)[0],
-        lng: JSON.parse(elem.coords)[1],
-      });
       return {
         lat: JSON.parse(elem.coords)[0],
         lng: JSON.parse(elem.coords)[1],

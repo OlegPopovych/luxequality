@@ -17,13 +17,12 @@ const Header = () => {
   };
 
   const handleSaveChanges = (): void => {
-    // Логіка для збереження змін
     handleCloseModal();
   };
 
   return (
     <div className="header">
-      <div>
+      <div className='header__logo'>
         <a href="/">
           <div data-testid="logo" style={{ height: '28px' }}>
             <svg
@@ -96,14 +95,13 @@ const Header = () => {
       </a>
       {isModalOpen && (
         <Modal
-          title="Створення нового оголошення"
+          title="Нове оголошення"
           onClose={handleCloseModal}
           onSave={handleSaveChanges}
         >
           <AddForm />
         </Modal>
       )}
-      {/* <button onClick={handleOpenModal}>Open Modal</button> */}
     </div>
   );
 };

@@ -17,27 +17,16 @@ export const MyComponent: React.FC<MyComponentProps> = ({
   setCords,
 }) => {
   const map = useMapEvents({
-    // load: () => {
-    //   const locate = map.getCenter();
-    //   console.log('load', locate);
-    //   setCenter(locate);
-    // },
-    // locationfound: (location) => {
-    //   setCords(location.latlng);
-    //   console.log('location found:', location);
-    // },
     zoom: () => {
       const bounds = map.getBounds();
       setBounds(bounds);
-      console.log({ '!!!!!!!': bounds });
     },
     moveend: () => {
       const bounds = map.getBounds();
       setBounds(bounds);
-      console.log({ '!!!!!!!': bounds });
     },
     click: (event) => {
-      const coords = event.latlng; // Отримати координати при події mouseup
+      const coords = event.latlng;
       setCords(coords);
     },
   });

@@ -4,7 +4,8 @@ import { useAppSelector } from '../../store/hooks';
 import { selectCoords } from '../../store/coordsSlice';
 import cn from 'classnames';
 import { usePageError } from '../../hooks/usePageError';
-// import axios from 'axios';
+
+const BASE_URL = 'https://luxequality-test-api-docker.onrender.com';
 
 interface FormData {
   name: string;
@@ -29,6 +30,16 @@ export const AddForm: React.FC = () => {
 
   const coords = useAppSelector(selectCoords)[0];
 
+  const handleClearForm = () => {
+    setFormData({
+      name: '',
+      location: '',
+      photo: null,
+      price: '',
+      desc: '',
+    });
+  };
+
   useEffect(() => {
     const getAddress = async () => {
       try {
@@ -37,46 +48,37 @@ export const AddForm: React.FC = () => {
         );
 
         const data = await res.json();
-        console.log(data);
         const address = `${
           data.address.city || data.address.town || data.address.village || ''
         }, ${data.address.road || ''} ${data.address.house_number || ''} ${
           data.address.country
         }, ${data.address.district}`;
         setFormData((prevData) => ({ ...prevData, ['location']: address }));
-
-        setIsCreated(true);
       } catch (error) {
-        console.error('Error getting address:', error);
+        console.log(error);
       }
     };
     if (coords && coords.lat && coords.lng) {
       getAddress();
-      // axios
-      //   .get(
-      //     `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${coords.lat}&lon=${coords.lng}`,
-      //   )
-      //   .then((response) => {
-      //     const address = response.data.display_name;
-      //     const data = response.data.address;
-      //     console.log(`Address: ${response.data.display_name}`);
-      //     console.log(`data: ${data}`);
-      //     setFormData((prevData) => ({ ...prevData, ['location']: address }));
-      //   })
-      //   .catch((error) => {
-      //     console.error('Error getting address:', error);
-      //   });
     }
   }, [coords]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+
+    if (isCreated) {
+      setIsCreated(true);
+    }
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const photoFile = e.target.files?.[0] || null;
     setFormData((prevData) => ({ ...prevData, photo: photoFile }));
+
+    if (isCreated) {
+      setIsCreated(true);
+    }
   };
 
   const handleCreate = (e: FormEvent) => {
@@ -87,7 +89,7 @@ export const AddForm: React.FC = () => {
       return;
     }
 
-    const apiUrl = 'http://localhost:8000/advertisement';
+    const apiUrl = `${BASE_URL}/advertisement`;
 
     setIsloading(true);
 
@@ -104,11 +106,11 @@ export const AddForm: React.FC = () => {
       body: data,
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log('Успішно створено:', data);
+      .then(() => {
+        setIsCreated(true);
+        handleClearForm();
       })
-      .catch((error) => {
-        console.error('Помилка при створенні:', error);
+      .catch(() => {
         setError({ error: 'Помилка' });
       })
       .finally(() => {
@@ -141,7 +143,7 @@ export const AddForm: React.FC = () => {
             placeholder="Розташування"
             name="location"
             value={formData.location}
-            // onChange={() => {}}
+            onChange={()=> {}}
           />
         </div>
       </div>
@@ -208,8 +210,9 @@ export const AddForm: React.FC = () => {
             )}
             disabled={isLoading}
           >
-            {!error && !isCreated ? 'Створити' : 'Помилка'}
+            {!error && !isCreated && 'Створити'}
             {isCreated && 'Успішно!'}
+            {error && 'Помилка'}
           </button>
         </div>
       </div>

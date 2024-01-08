@@ -1,6 +1,5 @@
 import React, {
   useState,
-  //  useEffect
 } from 'react';
 import {
   FeatureGroup,
@@ -9,7 +8,7 @@ import {
   Popup,
   TileLayer,
 } from 'react-leaflet';
-import { LatLng, LatLngBounds, LatLngTuple, Map } from 'leaflet';
+import { LatLng, LatLngBounds, LatLngTuple } from 'leaflet';
 import tileLayer from '../../util/tileLayer';
 import { MyComponent } from './MapComponent';
 import { PointType } from '../../util/types';
@@ -23,37 +22,19 @@ interface MainMapProps {
 }
 
 export const MapLayout: React.FC<MainMapProps> = ({ points, type }) => {
-  const [bounds, setBounds] = useState<LatLngBounds | null>(null);
   const [center, setCenter] = useState<LatLngTuple>([48.6211999, 24.5759679]);
-  const [map, setMap] = useState<Map | null>(null);
-  const [cords, setCords] = useState<LatLng | null>(null);
-  const [selectedMarker, setSelectedMarker] = useState<number[] | null>(null);
 
   const dispatch = useAppDispatch();
   const dispatcher = useThunkDispatch();
   const dispatchType = useAppDispatch();
 
-  console.log({ selectedMarker, cords, center, bounds, map });
-
   const handleCoords = (coords: LatLng) => {
-    setCords(() => coords);
-
     if (type === 'modal') {
       dispatch(addCoords([coords]));
     }
   };
 
-  // useEffect(() => {
-  //   map?.locate({
-  //     setView: true,
-  //   });
-  //   map?.flyToBounds([center]);
-  // }, [center]);
-
   const handleMarkerClick = (marker: number[]) => {
-    console.log(marker);
-    setSelectedMarker(marker);
-
     if (type !== 'modal' && marker) {
       dispatcher(fetchAdverts(JSON.stringify(marker)));
       dispatchType(changeType('one'));
@@ -63,7 +44,8 @@ export const MapLayout: React.FC<MainMapProps> = ({ points, type }) => {
   const handleSetBounds = (bounds: LatLngBounds) => {
     if (type !== 'modal' && bounds) {
       dispatch(setUpBounds(bounds));
-      setBounds(bounds);
+      dispatcher(fetchAdverts());
+      dispatchType(changeType('all'));
     }
   };
 
@@ -74,7 +56,7 @@ export const MapLayout: React.FC<MainMapProps> = ({ points, type }) => {
       <MyComponent
         setBounds={handleSetBounds}
         setCenter={setCenter}
-        setMap={setMap}
+        setMap={()=>{}}
         setCords={handleCoords}
       />
       <FeatureGroup>

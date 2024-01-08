@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import {
   changeType,
   fetchAdverts,
-  // selectAdverts,
   selectAdvertsLoadingStatus,
   selectAdvertsType,
   selectAdvertsWithBounds,
@@ -17,7 +16,6 @@ import { Spinner } from '../components/Loader/Spinner';
 
 const Info = () => {
   const adverts = useAppSelector(selectAdvertsWithBounds);
-  // const adverts = useAppSelector(selectAdverts);
   const loadingAllStatus = useAppSelector(selectAdvertsLoadingStatus);
   const type = useAppSelector(selectAdvertsType);
   const dispatcher = useThunkDispatch();
@@ -28,11 +26,6 @@ const Info = () => {
     dispatchType(changeType('all'));
   }, []);
 
-  const handleGetAll = () => {
-    dispatcher(fetchAdverts());
-    dispatchType(changeType('all'));
-  };
-
   return (
     <div className="info">
       {loadingAllStatus === 'loading' && <Spinner />}
@@ -41,11 +34,6 @@ const Info = () => {
       )}
       {true && loadingAllStatus === 'idle' && (
         <>
-          {type === 'one' && (
-            <button className="button" onClick={handleGetAll}>
-              Закрити
-            </button>
-          )}
           {type === 'all' && (
             <h3 className="info__title title is-4">{`Знайдено ${adverts.length} оголошень`}</h3>
           )}

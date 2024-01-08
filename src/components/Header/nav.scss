@@ -1,4 +1,8 @@
 .nav {
+	grid-area: nav;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	&__list {
 		display: flex;
 		gap: 20px;
@@ -13,6 +17,14 @@
 
 		&:hover {
 			color: #CAFA7A;
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	.nav {
+		&__item {
+			line-height: 30px;
 		}
 	}
 }

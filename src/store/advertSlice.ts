@@ -6,7 +6,7 @@ import { Advert } from '../util/types';
 import axios from 'axios';
 import { LatLngBounds } from 'leaflet';
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'https://luxequality-test-api-docker.onrender.com';
 
 type initialType = {
 	data: Advert[];

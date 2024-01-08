@@ -51,7 +51,7 @@ export const MapLayout: React.FC<MainMapProps> = ({ points, type }) => {
 
   return (
     <MapContainer
-      center={center} zoom={18}
+      center={center} zoom={6}
       scrollWheelZoom={true}>
       <MyComponent
         setBounds={handleSetBounds}

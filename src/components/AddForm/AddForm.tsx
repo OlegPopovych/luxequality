@@ -123,6 +123,7 @@ export const AddForm: React.FC = () => {
     <form onSubmit={handleCreate}>
       <div className="field">
         <label className="label">Назва</label>
+
         <div className="control">
           <input
             className="input"
@@ -137,6 +138,7 @@ export const AddForm: React.FC = () => {
 
       <div className="field">
         <label className="label">Розташування на мапі</label>
+
         <div className="control">
           <input
             className="input"
@@ -151,6 +153,7 @@ export const AddForm: React.FC = () => {
 
       <div className="field">
         <label className="label">Опис</label>
+
         <div className="control">
           <input
             className="input"
@@ -165,6 +168,7 @@ export const AddForm: React.FC = () => {
 
       <div className="field">
         <label className="label">Ціна</label>
+
         <div className="control">
           <input
             className="input"
@@ -179,6 +183,7 @@ export const AddForm: React.FC = () => {
 
       <div className="field">
         <label className="label">Додати фото</label>
+
         <div className="file has-name is-fullwidth is-normal is-info">
           <label className="file-label">
             <input
@@ -187,12 +192,15 @@ export const AddForm: React.FC = () => {
               name="photo"
               onChange={handleFileChange}
             />
+
             <span className="file-cta">
               <span className="file-icon">
                 <i className="fas fa-upload"></i>
               </span>
+
               <span className="file-label">Додати фото</span>
             </span>
+
             <span className="file-name">
               {formData.photo ? formData.photo.name : 'Фото не додано'}
             </span>
@@ -212,11 +220,14 @@ export const AddForm: React.FC = () => {
             disabled={isLoading}
           >
             {!error && !isCreated && 'Створити'}
+
             {isCreated && 'Успішно!'}
+
             {error && 'Помилка'}
           </button>
         </div>
       </div>
+
       <div style={{ height: '300px' }}>
         <MapLayout
           points={

@@ -59,6 +59,7 @@ export const MapLayout: React.FC<MainMapProps> = ({ points, type }) => {
         setMap={()=>{}}
         setCords={handleCoords}
       />
+
       <FeatureGroup>
         {points &&
           points.map(({ lat, lng, title }, index) => (
@@ -69,6 +70,7 @@ export const MapLayout: React.FC<MainMapProps> = ({ points, type }) => {
                 click: () => handleMarkerClick([lat, lng]),
               }}
             >
+
               <Popup>{title}</Popup>
             </Marker>
           ))}

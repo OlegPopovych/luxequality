@@ -25,6 +25,7 @@ export const MainMap: React.FC<MainMapProps> = () => {
   return (
     <div className="main__containter">
       <MapLayout points={pointsToRender} />
+
       <Info />
     </div>
   );

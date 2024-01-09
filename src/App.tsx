@@ -7,11 +7,13 @@ function App() {
   return (
     <div className="grid">
       <Header />
+
       <main>
         <Routes>
           <Route path="/" element={<MainMap />} />
         </Routes>
       </main>
+
       <Footer />
     </div>
   );
